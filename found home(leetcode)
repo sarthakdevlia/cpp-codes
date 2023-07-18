@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+int recursion(int start ,int desti){
+    cout<<"value of start"<<start<<" "<<"value of desti"<<desti<<endl;
+    cout;
+    if(start == desti){
+        cout<<"found home";
+        return 1;
+    }
+
+    start++;
+
+    recursion(start , desti);
+
+
+}
+int main(){
+    int start;
+    int desti;
+    int ans = recursion(1,10);
+    cout<<ans;
+}
