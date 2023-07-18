@@ -1,0 +1,36 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int a[3][3];
+    cout<<"enter the array";
+    for(int i=0;i<3;i++){
+        for(int j=0;j<3;j++){
+            cin>>a[i][j];
+        }
+    }
+    for(int i=0;i<3;i++){
+      for(int j=0;j<3;j++){
+            cout<<a[i][j]<<" ";
+        }cout<<endl;
+    }
+    //cout<<"enter the key you want to find";
+    int key=9;
+    int row = 3;
+    int col = 3;
+    int s=0;
+    int e=3*3-1;
+    int mid=(s+e)/2;
+    while(s<=e){
+        if(a[mid/col][mid%col]==key){
+            cout<<mid;
+            break;
+        }
+        if(key>a[mid/col][mid%col]){
+            s=mid+1;
+        }
+        if(key<a[mid/col][mid%col]){
+            e=mid-1;
+        }
+        mid=(s+e)/2;
+    }
+} 
