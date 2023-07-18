@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+bool linear(int arr[] , int key , int size){
+    //bc
+    if(arr[0] == 0){
+        return false;
+    }
+    if(arr[0] == key){
+        return true;
+    }
+    //rc
+    else{
+        bool remaining = linear ( arr + 1 , key , size - 1 );
+        return remaining;
+    }
+}
+int main(){
+    int arr[5] = {1,2,3,4,5} ;
+    int key = 3 ;
+    int size = 5 ;
+    int ans = linear(arr , key , size) ;
+    if(ans){
+        cout<<"present"<<endl;
+    }
+    else{
+        cout<<"absent"<<endl;
+    }
+    return 0 ;
+}
