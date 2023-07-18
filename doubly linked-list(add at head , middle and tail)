@@ -1,0 +1,81 @@
+#include <iostream>
+using namespace std;
+class node{
+    public:
+    int data;
+    node* prev;
+    node* next;
+
+    //constructor
+    node(int d){
+        this -> data = d;
+        this -> prev = NULL;
+        this -> next = NULL;
+    }
+};
+int getlength(node* head){
+    node* temp = head;
+    int counter = 0;
+    while(temp != NULL){
+        counter++;
+        temp = temp -> next;
+    }
+    return counter;
+}
+void print(node * head){
+    node * temp = head;
+    while ( temp != NULL){
+        cout << temp -> data<<" ";
+        temp = temp -> next;
+    }
+    cout<<endl;
+
+}
+void insertathead(node* &head , int d){
+    node * temp = new node(d);
+    temp -> next = head;
+    head -> prev = temp;
+    head = temp;
+}
+void insertattail(node * &tail , int d){
+    node * temp = new node(d);
+    tail -> next = temp;
+    temp -> prev = tail;
+    temp = tail;
+}
+void insertatposition(node*tail,node*head,int position,int d){
+    //inserting at head
+    if(position==1){
+        insertathead(head , d);
+        return;
+    }
+    node* temp = head;
+    int cnt = 1;
+    while(cnt<position-1){
+        temp = temp -> next;
+        cnt++;
+    }
+    //insertattail
+    if(temp -> next == NULL){
+        insertattail(tail,d);
+        return;
+    }
+    //creating a node
+    node* nodetoinsert = new node(d);
+    nodetoinsert -> next = temp -> next;
+    nodetoinsert -> prev = temp;
+    temp -> next = nodetoinsert -> prev;
+    temp -> next -> prev = nodetoinsert -> next;
+
+}
+int main(){
+    node * node1 = new node(10);
+    node* head = node1;
+    node* tail = node1;
+    insertathead(head , 15);
+    insertattail(tail , 17);
+    insertatposition(tail,head,2,199);
+    print(head);
+    cout<<getlength(head)<<endl;
+    return 0;
+}
