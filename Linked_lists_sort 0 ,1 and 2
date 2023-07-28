@@ -1,0 +1,40 @@
+
+Node* sortList(Node *head){
+    Node * curr = head;
+    int counter0 = 0;
+    int counter1 = 0;
+    int counter2 = 0;
+    while(curr != NULL){
+       if(curr -> data == 0){
+           counter0++;
+       }
+       if(curr -> data == 1){
+           counter1++;
+       }
+       if(curr -> data == 2){
+           counter2++;
+       }
+        curr = curr -> next;
+        
+    }
+    curr = head;
+    while(curr != NULL){
+        if(counter0 != 0){
+            curr -> data = 0;
+            counter0--;
+        }
+        else if(counter1 != 0){
+            curr -> data = 1;
+            counter1--;
+        }
+        else{
+            curr -> data = 2;
+            counter2--;
+        }
+        curr = curr -> next;
+        //print(head);
+
+    }
+    return head;
+
+}
